@@ -5,17 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.List;
+
 @AllArgsConstructor
-@ToString
+
 @Getter
 public class Menu {
 
-    private Pizza pizza;
-    private Drink drink;
+    private List<Pizza> pizza;
+    private List<Drink> drink;
+    private List<Topping> topping;
 
 
-    public void theOrder(){
-        System.out.println("this is your meal");
+    @Override
+    public String toString() {
+        pizza.forEach(System.out::println);
+        drink.forEach(System.out::println);
+        topping.forEach(System.out::println);
+        return "";
     }
-
 }

@@ -63,9 +63,29 @@ public class BeansConfiguration {
         return new Topping("Onions", 22, 0.69);
     }
 
+
+
+
     @Bean(name = "getMenu")
-    Menu menu(Pizza pizza, Drink drink){
-       return  new Menu(getPizzaOne(), getDrinkTwo());
+    Menu menu(){
+
+        List<Pizza> l1 = new ArrayList<>();
+        List<Drink> l2 = new ArrayList<>();
+        List<Topping> l3 = new ArrayList<>();
+
+        l1.add(getPizzaOne());
+        l1.add(getPizzaTwo());
+        l1.add(getPizzaThree());
+
+        l2.add(getDrinkOne());
+        l2.add(getDrinkTwo());
+        l2.add(getDrinkThree());
+
+        l3.add(getToppingOne());
+        l3.add(getToppingTwo());
+        l3.add(getToppingThree());
+
+       return new Menu(l1, l2, l3);
 }
 
 
