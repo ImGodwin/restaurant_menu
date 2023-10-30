@@ -19,17 +19,17 @@ public class BeansConfiguration {
    @Bean
    @Primary
    Pizza getPizzaOne(){
-       return new Pizza("Pizza Marghertita(Tomato, Cheese)", 1104, 4.99);
+       return new Pizza("Pizza Marghertita(Tomato, Cheese)", 1104, 4.99, getToppingOne().getName());
    }
 
    @Bean
    Pizza getPizzaTwo(){
-       return new Pizza("Hawaian Pizza(Tomato, Cheese, Ham, Pineapple)", 1024, 6.49);
+       return new Pizza("Hawaian Pizza(Tomato, Cheese, Ham, Pineapple)", 1024, 6.49, getToppingTwo().getName());
    }
 
     @Bean
     Pizza getPizzaThree(){
-        return new Pizza("Salami Pizza(Tomato, Cheese, Salami)", 1160, 5.99);
+        return new Pizza("Salami Pizza(Tomato, Cheese, Salami)", 1160, 5.99, getToppingThree().getName());
     }
 
     @Bean
@@ -49,7 +49,7 @@ public class BeansConfiguration {
     }
 
     @Bean
-    Topping getTopping1(){
+    Topping getToppingOne(){
        return new Topping("Cheese", 92, 0.69);
     }
 
@@ -66,7 +66,7 @@ public class BeansConfiguration {
     @Bean(name = "getMenu")
     Menu menu(Pizza pizza, Drink drink){
        return  new Menu(getPizzaOne(), getDrinkTwo());
-    }
+}
 
 
 }

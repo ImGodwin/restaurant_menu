@@ -16,6 +16,6 @@ public class Pizza {
     private String name;
     private int calories;
     private double price;
-    //private List<Topping> topping;
+    private String topping;
 
 }
