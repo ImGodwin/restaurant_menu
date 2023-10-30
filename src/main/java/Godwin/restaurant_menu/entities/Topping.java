@@ -7,10 +7,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Getter
-public class Pizza {
-
+public class Topping {
     private String name;
     private int calories;
     private int price;
-
 }
