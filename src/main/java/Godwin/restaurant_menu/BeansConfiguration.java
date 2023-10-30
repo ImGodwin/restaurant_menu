@@ -6,6 +6,7 @@ import Godwin.restaurant_menu.entities.Pizza;
 import Godwin.restaurant_menu.entities.Topping;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 public class BeansConfiguration {
 
    @Bean
+   @Primary
    Pizza getPizzaOne(){
        return new Pizza("Pizza Marghertita(Tomato, Cheese)", 1104, 4.99);
    }
@@ -36,6 +38,7 @@ public class BeansConfiguration {
     }
 
     @Bean
+    @Primary
     Drink getDrinkTwo(){
         return new Drink("Water", 0, 1.29);
     }
@@ -60,8 +63,7 @@ public class BeansConfiguration {
         return new Topping("Onions", 22, 0.69);
     }
 
-    @Bean(name = "getInterviewer")
-    @Scope("prototype")
+    @Bean(name = "getMenu")
     Menu menu(Pizza pizza, Drink drink){
        return  new Menu(getPizzaOne(), getDrinkTwo());
     }

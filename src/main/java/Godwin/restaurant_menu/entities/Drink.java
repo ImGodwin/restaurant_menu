@@ -5,11 +5,19 @@ import lombok.Getter;
 import lombok.ToString;
 
 @AllArgsConstructor
-@ToString
 @Getter
 public class Drink {
 
     private String name;
     private int calories;
     private double price;
+
+    @Override
+    public String toString() {
+        return "Drink{" +
+                "name='" + name + '\'' +
+                ", calories=" + calories +
+                ", price=" + price +
+                '}';
+    }
 }

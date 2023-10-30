@@ -13,10 +13,6 @@ public class Menu {
     private Pizza pizza;
     private Drink drink;
 
-    public Menu(Pizza pizza, Drink drink) {
-        this.pizza = pizza;
-        this.drink = drink;
-    }
 
     public void theOrder(){
         System.out.println("this is your meal");
