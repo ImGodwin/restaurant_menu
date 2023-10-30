@@ -12,6 +12,9 @@ public class Menu {
 
     private Pizza pizza;
     private Drink drink;
-    private Topping topping;
+
+    public void theOrder(){
+        System.out.println("this is your meal");
+    }
 
 }
