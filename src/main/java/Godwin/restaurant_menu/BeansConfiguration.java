@@ -17,7 +17,6 @@ import java.util.List;
 public class BeansConfiguration {
 
    @Bean
-   @Primary
    Pizza getPizzaOne(){
        return new Pizza("Pizza Marghertita(Tomato, Cheese)", 1104, 4.99, getToppingOne().getName());
    }
@@ -38,7 +37,6 @@ public class BeansConfiguration {
     }
 
     @Bean
-    @Primary
     Drink getDrinkTwo(){
         return new Drink("Water", 0, 1.29);
     }
@@ -67,6 +65,7 @@ public class BeansConfiguration {
 
 
     @Bean(name = "getMenu")
+    @Scope("prototype")
     Menu menu(){
 
         List<Pizza> l1 = new ArrayList<>();

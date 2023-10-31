@@ -20,7 +20,9 @@ public class Menu {
     @Override
     public String toString() {
         pizza.forEach(System.out::println);
+        System.out.println("<<<<<<<<Drinks>>>>>>>>>");
         drink.forEach(System.out::println);
+        System.out.println("<<<<<<<<<<toppings>>>>>>>");
         topping.forEach(System.out::println);
         return "";
     }
