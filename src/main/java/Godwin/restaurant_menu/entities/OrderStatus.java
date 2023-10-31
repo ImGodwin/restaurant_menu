@@ -1,5 +1,5 @@
 package Godwin.restaurant_menu.entities;
 
-public enum MealStatus {
+public enum OrderStatus {
     COOKING, READY, SERVED
 }
