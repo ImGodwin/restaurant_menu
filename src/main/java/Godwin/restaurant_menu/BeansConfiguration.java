@@ -1,9 +1,7 @@
 package Godwin.restaurant_menu;
 
-import Godwin.restaurant_menu.entities.Drink;
-import Godwin.restaurant_menu.entities.Menu;
-import Godwin.restaurant_menu.entities.Pizza;
-import Godwin.restaurant_menu.entities.Topping;
+import Godwin.restaurant_menu.entities.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -12,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @Configuration
 public class BeansConfiguration {
@@ -60,12 +59,35 @@ public class BeansConfiguration {
     Topping getToppingThree(){
         return new Topping("Onions", 22, 0.69);
     }
+    Random randomNum = new Random();
+
+   @Bean
+   Order getOrder()
+   {
+       List<Pizza> pizzaOne = new ArrayList<>();
+       List<Drink> drinkOne = new ArrayList<>();
+       List<Topping> toppingOne = new ArrayList<>();
+
+       pizzaOne.add(getPizzaOne());
+       drinkOne.add(getDrinkOne());
+       toppingOne.add(getToppingOne());
+
+       return new Order(randomNum.nextInt(1, 10), pizzaOne, drinkOne, toppingOne, OrderStatus.READY, 3, 1.35);
+   }
+
+
+    @Bean
+    Table getTable(){
+
+       List<Order> orderOne = new ArrayList<>();
+       orderOne.add(getOrder());
+       return new Table(randomNum.nextInt(1, 50), TableStatus.OCCUPIED, orderOne, 5);
+    }
 
 
 
-
-    @Bean(name = "getMenu")
-    @Scope("prototype")
+   /* @Bean(name = "getMenu")
+    //@Scope("prototype")
     Menu menu(){
 
         List<Pizza> l1 = new ArrayList<>();
@@ -85,7 +107,9 @@ public class BeansConfiguration {
         l3.add(getToppingThree());
 
        return new Menu(l1, l2, l3);
-}
+    }*/
+
+
 
 
 }

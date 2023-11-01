@@ -16,10 +16,10 @@ public class Order {
     private OrderStatus mealStatus;
     private int numOfSeats;
     private double orderTime;
-    private double totalCost;
+    //private double totalCost =  ;
 
     public Order(int orderNum, List<Pizza> pizza, List<Drink> drink, List<Topping> toppings,
-                 OrderStatus mealStatus, int numOfSeats, double orderTime, @Value("${total.cost}") double totalCost) {
+                 OrderStatus mealStatus, int numOfSeats, double orderTime) {
         this.orderNum = orderNum;
         this.pizza = pizza;
         this.drink = drink;
@@ -27,6 +27,7 @@ public class Order {
         this.mealStatus = mealStatus;
         this.numOfSeats = numOfSeats;
         this.orderTime = orderTime;
-        this.totalCost = totalCost;
+
     }
+
 }
