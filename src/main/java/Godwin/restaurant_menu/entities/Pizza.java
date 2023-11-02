@@ -18,6 +18,8 @@ public class Pizza {
     private double price;
     private String topping;
 
-
-
+    public static int checkPrice(int a, int b, int c)
+    {
+        return a + b + c;
+    }
 }

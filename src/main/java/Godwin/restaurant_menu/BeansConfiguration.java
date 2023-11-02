@@ -15,13 +15,12 @@ import java.util.Random;
 public class BeansConfiguration {
 
    @Bean
-
    Pizza getPizzaOne(){
        return new Pizza("Pizza Marghertita(Tomato, Cheese)", 1104, 4.99, getToppingOne().getName());
    }
 
    @Bean
-
+   @Primary
    Pizza getPizzaTwo(){
        return new Pizza("Hawaian Pizza(Tomato, Cheese, Ham, Pineapple)", 1024, 6.49, getToppingTwo().getName());
    }
@@ -88,7 +87,7 @@ public class BeansConfiguration {
 
 
 
-   /* @Bean(name = "getMenu")
+    @Bean(name = "getMenu")
     //@Scope("prototype")
     Menu menu(){
 
@@ -109,7 +108,7 @@ public class BeansConfiguration {
         l3.add(getToppingThree());
 
        return new Menu(l1, l2, l3);
-    }*/
+    }
 
 
 

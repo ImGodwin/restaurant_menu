@@ -14,6 +14,7 @@ public class MyRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(RestaurantMenuApplication.class);
         System.out.println(ctx.getBean("getTable"));
+        System.out.println(ctx.getBean("getTable"));
         ctx.close();
     }
 }

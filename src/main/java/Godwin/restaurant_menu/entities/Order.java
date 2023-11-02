@@ -31,7 +31,7 @@ public class Order {
         this.coperto = coperto;
     }
 
-  /*  public static double getTotal()
+/*    public static double getTotal()
     {
 
     }*/
