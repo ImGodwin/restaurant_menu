@@ -15,11 +15,13 @@ import java.util.Random;
 public class BeansConfiguration {
 
    @Bean
+
    Pizza getPizzaOne(){
        return new Pizza("Pizza Marghertita(Tomato, Cheese)", 1104, 4.99, getToppingOne().getName());
    }
 
    @Bean
+
    Pizza getPizzaTwo(){
        return new Pizza("Hawaian Pizza(Tomato, Cheese, Ham, Pineapple)", 1024, 6.49, getToppingTwo().getName());
    }
