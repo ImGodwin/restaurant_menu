@@ -4,9 +4,10 @@ import lombok.ToString;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
+import java.time.LocalTime;
 import java.util.List;
 @ToString
-@PropertySource("application.properties")
+
 public class Order {
 
     private int orderNum;
@@ -15,11 +16,11 @@ public class Order {
     private List<Topping> toppings;
     private OrderStatus mealStatus;
     private int numOfSeats;
-    private double orderTime;
-    //private double totalCost =  ;
+    private LocalTime orderTime;
+    private double coperto;
 
-    public Order(int orderNum, List<Pizza> pizza, List<Drink> drink, List<Topping> toppings,
-                 OrderStatus mealStatus, int numOfSeats, double orderTime) {
+    public Order(int orderNum, List<Pizza> pizza, List<Drink> drink, List<Topping> toppings, OrderStatus mealStatus,
+                 int numOfSeats, LocalTime orderTime, double coperto) {
         this.orderNum = orderNum;
         this.pizza = pizza;
         this.drink = drink;
@@ -27,7 +28,11 @@ public class Order {
         this.mealStatus = mealStatus;
         this.numOfSeats = numOfSeats;
         this.orderTime = orderTime;
-
+        this.coperto = coperto;
     }
 
+  /*  public static double getTotal()
+    {
+
+    }*/
 }

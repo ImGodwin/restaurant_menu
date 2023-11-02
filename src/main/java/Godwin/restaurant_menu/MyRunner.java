@@ -1,4 +1,4 @@
-/*package Godwin.restaurant_menu;
+package Godwin.restaurant_menu;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -13,7 +13,7 @@ public class MyRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(RestaurantMenuApplication.class);
-        //System.out.println("getTable");
+        System.out.println(ctx.getBean("getTable"));
         ctx.close();
     }
-}*/
+}

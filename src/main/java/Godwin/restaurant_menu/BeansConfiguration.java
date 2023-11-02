@@ -2,17 +2,16 @@ package Godwin.restaurant_menu;
 
 import Godwin.restaurant_menu.entities.*;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 @Configuration
+@PropertySource("application.properties")
 public class BeansConfiguration {
 
    @Bean
@@ -62,7 +61,7 @@ public class BeansConfiguration {
     Random randomNum = new Random();
 
    @Bean
-   Order getOrder()
+   Order getOrder(@Value("${coperto}") double coperto)
    {
        List<Pizza> pizzaOne = new ArrayList<>();
        List<Drink> drinkOne = new ArrayList<>();
@@ -72,15 +71,16 @@ public class BeansConfiguration {
        drinkOne.add(getDrinkOne());
        toppingOne.add(getToppingOne());
 
-       return new Order(randomNum.nextInt(1, 10), pizzaOne, drinkOne, toppingOne, OrderStatus.READY, 3, 1.35);
+       return new Order(randomNum.nextInt(1, 10), pizzaOne, drinkOne, toppingOne, OrderStatus.READY,
+               3, LocalTime.now(), coperto);
    }
 
 
     @Bean
-    Table getTable(){
+    Table getTable(@Value("${coperto}") double coperto){
 
        List<Order> orderOne = new ArrayList<>();
-       orderOne.add(getOrder());
+       orderOne.add(getOrder(coperto));
        return new Table(randomNum.nextInt(1, 50), TableStatus.OCCUPIED, orderOne, 5);
     }
 
