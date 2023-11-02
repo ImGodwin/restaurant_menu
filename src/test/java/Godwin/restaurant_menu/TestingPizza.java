@@ -1,9 +1,9 @@
 package Godwin.restaurant_menu;
 
 import Godwin.restaurant_menu.entities.Pizza;
-import Godwin.restaurant_menu.entities.Table;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,9 +11,10 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
+import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Slf4j
 public class TestingPizza {
@@ -46,6 +47,30 @@ public class TestingPizza {
         assertEquals(price, pizza.getPrice());
     }
 
+    @Test
+    public void confirmPrice()
+    {
+        Pizza pizza = (Pizza) ctx.getBean("getPizzaOne");
+        Pizza pizza2 = (Pizza) ctx.getBean("getPizzaTwo");
+        assertAll(
+                () -> assertTrue(pizza.getPrice() > 3),
+                ()-> assertNotNull(pizza),
+                ()-> assertNotSame(pizza, pizza2)
+        );
+    }
+
+    @Test
+    public void checkList()
+    {
+        List<Pizza> p = Stream.of((Pizza) ctx.getBean("getPizzaOne"), (Pizza) ctx.getBean("getPizzaTwo"),
+                (Pizza) ctx.getBean("getPizzaThree")).toList();
+        double total = 0;
+        for (int i = 0; i < p.size(); i++) {
+            total += p.get(i).getPrice();
+        }
+        assertTrue(p.size() > 0);
+        assertEquals(17.47, total);
+    }
 
     @AfterAll
     static void afterAll() {
